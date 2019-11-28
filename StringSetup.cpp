@@ -9,9 +9,6 @@ StringSetup::StringSetup()
 
 }
 
-
-
-
 Position StringSetup::find_bm(const string& pat, const string& text) 
 {
 	Position pat_len = pat.size();
@@ -54,14 +51,26 @@ Position StringSetup::find_bm(const string& pat, const string& text)
 
 Position StringSetup::find_kmp(const std::string& pat, const std::string& text)
 {
-	/*string S;
-	string W;
-
-	string W;
+	Position pat_len = pat.size();
+	Position text_len = text.size();
+	string P;
 	int nP;
 
 	Position j;
-	Position k; */
+	Position k; 
+
+
+	nP = 0;
+
+	/*do
+	{
+		//if 
+
+
+
+
+	} while (j < text_len); */
+
 	return -1;
 
 } 

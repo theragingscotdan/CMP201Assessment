@@ -11,6 +11,18 @@ using std::list;
 
 StringSetup* strings;
 
+list<string> spamWords;
+
+void FillList()
+{
+	spamWords.push_back("Tiger");
+	spamWords.push_back("World");
+	spamWords.push_back("spam");
+	spamWords.push_back("Cloud");
+}
+
+
+
 bool check(string pat, string text)
 {
 
@@ -24,19 +36,48 @@ bool check(string pat, string text)
 
 }
 
-int main(int argc, char* argv[])
+// https://www.oreilly.com/library/view/c-cookbook/0596007612/ch04s15.html
+
+void searchText()
 {
+	
+	
+	string temp;
+	//string pat;
+	
+	// make a list of strings then loop through the list assigning each entry to pat
 	string text;
 	text = "The Indian roller(Coracias benghalensis) is a member of the bird family Coraciidae, the rollers.It occurs widely from the Arabian Peninsula to the Indian subcontinentand is designated as Least Concern on the IUCN Red List.The bird is best known for the aerobatic displays of males during the breeding season.It is commonly found in open grasslandand scrub forest habitats, and is often seen perched on roadside bare treesand wires, which give it a good view of the ground below where it finds its prey.Its diet consists mainly of insects such as beetlesand grasshoppers, but also includes spiders, scorpions, amphibiansand small reptiles. The largest population occurs in India, and several states in India have chosen it as their state bird.This picture shows an Indian roller of the benghalensis subspecies, photographed in Kanha Tiger Reserve in the Indian state of Madhya Pradesh. ";
 
+	//auto it = spamWords.begin();
 	string pat = "Tiger"; // insert what to look for here
-
+	//for (int i = 0; i < spamWords.size(); ++i)
 	
+		//spamWords.front() = pat;
+	//while (it != spamWords.end())
+	//{
+	//pat = spamWords;
+	//}
+
 	if (check(pat, text))
 	{
 		Position pos = strings->find_bm(pat, text);
-		cout << "found " << pat << " at position " << pos << endl;
-	}	
+		cout << "spam detected" << endl;
+		cout << "spam word \"" << pat << "\" was found at position " << pos << endl;
+	}
+	else if (check(pat, text) == false)
+	{
+		cout << "No spam found" << endl;
+	}
+		//spamWords.pop_front();
+	
+}
+
+
+int main(int argc, char* argv[])
+{
+	
+	searchText();
 
 	return 0;
 	
