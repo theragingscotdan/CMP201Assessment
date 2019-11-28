@@ -19,7 +19,7 @@ public:
 
 	// boyer-moore algorithm
 	Position find_bm(const std::string& pat, const std::string& text);
-	Position find_rk(const std::string& pat, const std::string& text);
+	Position find_kmp(const std::string& pat, const std::string& text);
 	
 
 

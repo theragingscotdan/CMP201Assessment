@@ -11,6 +11,18 @@ using std::list;
 
 StringSetup* strings;
 
+bool check(string pat, string text)
+{
+
+	Position pos = strings->find_bm(pat, text);
+
+	if (pos == -1)
+	{
+		return false;
+	}
+	return true;
+
+}
 
 int main(int argc, char* argv[])
 {
@@ -19,15 +31,14 @@ int main(int argc, char* argv[])
 
 	string pat = "Tiger"; // insert what to look for here
 
-	Position pos = strings->find_bm(pat, text);
-
-	cout << "found " << pat << " at position " << pos << endl;
+	
+	if (check(pat, text))
+	{
+		Position pos = strings->find_bm(pat, text);
+		cout << "found " << pat << " at position " << pos << endl;
+	}	
 
 	return 0;
 	
 }
 
-bool check()
-{
-	return false;
-}

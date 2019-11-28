@@ -36,8 +36,7 @@ Position StringSetup::find_bm(const string& pat, const string& text)
 			continue;
 		}
 
-		//show_context(pat, i);
-		//show_context(text, i);
+		
 		int j;
 		for (j = 0; j < pat_len; j++) {
 			//show_context(pat, j);
@@ -53,14 +52,16 @@ Position StringSetup::find_bm(const string& pat, const string& text)
 	return -1; // Not found.
 }
 
-Position StringSetup::find_rk(const std::string& pat, const std::string& text)
+Position StringSetup::find_kmp(const std::string& pat, const std::string& text)
 {
-	int M;
-	int N;
-	int i, j;
-	int p;
-	int t;
-	int h = 1;
+	/*string S;
+	string W;
 
-	return 0;
+	string W;
+	int nP;
+
+	Position j;
+	Position k; */
+	return -1;
+
 } 
