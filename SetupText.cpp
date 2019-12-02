@@ -13,7 +13,7 @@ using std::endl;
 
 SetupText::SetupText()
 {
-	spamWords.push_back("Tiger");
+	//spamWords.push_back("Tiger");
 	spamWords.push_back("World");
 	spamWords.push_back("spam");
 	spamWords.push_back("Cloud");
@@ -21,8 +21,10 @@ SetupText::SetupText()
 	spamWords.push_back("Percentage");
 	spamWords.push_back("Keyboard");
 	spamWords.push_back("Mouse");
-	spamWords.push_back("perched");
-
+	//spamWords.push_back("perched");
+	spamWords.push_back("nanomachines");
+	spamWords.push_back("game");
+	spamWords.push_back("anime");
 	
 }
 
@@ -76,6 +78,7 @@ void SetupText::searchText()
 			Position pos = strings->find_bm(pat, text);
 			cout << "spam detected" << endl;
 			cout << "spam word \"" << pat << "\" was found at position " << pos << endl;
+			break;
 		}
 		else if (check(pat, text) == false)
 		{
