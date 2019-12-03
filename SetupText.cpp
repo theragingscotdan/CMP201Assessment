@@ -13,7 +13,7 @@ using std::endl;
 
 SetupText::SetupText()
 {
-	//spamWords.push_back("Tiger");
+	spamWords.push_back("Tiger");
 	spamWords.push_back("World");
 	spamWords.push_back("spam");
 	spamWords.push_back("Cloud");
@@ -21,7 +21,7 @@ SetupText::SetupText()
 	spamWords.push_back("Percentage");
 	spamWords.push_back("Keyboard");
 	spamWords.push_back("Mouse");
-	//spamWords.push_back("perched");
+	spamWords.push_back("perched");
 	spamWords.push_back("nanomachines");
 	spamWords.push_back("game");
 	spamWords.push_back("anime");
