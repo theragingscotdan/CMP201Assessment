@@ -1,10 +1,13 @@
 #include <string>
 #include <list>
 #include <iostream>
+#include <cctype>
+#include <algorithm>
+#include <iterator>
 
 #include "SetupText.h"
 
-
+using std::transform;
 using std::string;
 using std::list;
 using std::cout;
@@ -13,7 +16,7 @@ using std::endl;
 
 SetupText::SetupText()
 {
-	spamWords.push_back("Tiger");
+	//spamWords.push_back("Tiger");
 	spamWords.push_back("World");
 	spamWords.push_back("spam");
 	spamWords.push_back("Cloud");
@@ -25,21 +28,47 @@ SetupText::SetupText()
 	spamWords.push_back("nanomachines");
 	spamWords.push_back("game");
 	spamWords.push_back("anime");
+	spamWords.push_back("growl");
+	spamWords.push_back("Mathematics");
+	spamWords.push_back("Debug");
+	spamWords.push_back("programming");
+	spamWords.push_back("Sword");
+	spamWords.push_back("Art");
+	spamWords.push_back("Online");
+
+
+
+
+	spamWords.push_back("grown");
 	
 }
 
-string SetupText::ChangeCase(const string text)
+
+
+/*list<string> SetupText::ChangeCase(string& s, string& pat)
 {
-	/*
-		char a, b;
+	// this code was https://www.oreilly.com/library/view/c-cookbook/0596007612/ch04s15.html
+	string temp;
 
-		return(tolower(a) == b);
+	// iterate through spamwords
+	// change each character to lowercase
+	list<string>::iterator it;
 
-		string temp;
+	for (it = spamWords.begin(); it != spamWords.end(); ++it)
+	{
+		temp = *it;
 
-		std::transform(text.begin(), text.end())*/
-		return text;
-}
+		//if 
+		//pat.tolower();
+		//for (int i = 0; i < pat.end; ++i)
+		//{
+			//tolower();
+		//}
+
+		return spamWords;
+	}
+
+} */
 
 bool SetupText::check(string pat, string text)
 {
@@ -56,6 +85,8 @@ void SetupText::searchText()
 {
 	string temp;
 	string pat;
+
+	
 
 	// make a list of strings then loop through the list assigning each entry to pat
 	string text;
@@ -82,7 +113,7 @@ void SetupText::searchText()
 		}
 		else if (check(pat, text) == false)
 		{
-			cout << "No spam found" << endl;
+			cout << "The spam word \"" << pat << "\" was found in the text" << endl;
 		}
 		//spamWords.pop_front();
 	}
