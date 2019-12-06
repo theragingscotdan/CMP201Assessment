@@ -21,5 +21,6 @@ protected:
 
 private:
 	std::list<std::string> spamWords;
+	int q = 157;
 
 };

@@ -13,6 +13,8 @@ using std::list;
 using std::cout;
 using std::endl;
 
+ 
+
 
 SetupText::SetupText()
 {
@@ -35,7 +37,8 @@ SetupText::SetupText()
 	spamWords.push_back("Sword");
 	spamWords.push_back("Art");
 	spamWords.push_back("Online");
-
+	spamWords.push_back("Bells");
+	spamWords.push_back("Whistles");
 
 
 
@@ -72,7 +75,9 @@ SetupText::SetupText()
 
 bool SetupText::check(string pat, string text)
 {
-	Position pos = strings->find_bm(pat, text);
+	
+	//Position pos = strings->find_bm(pat, text);
+	Position pos = strings->findrk(pat, text, q);
 
 	if (pos == -1)
 	{
@@ -90,6 +95,7 @@ void SetupText::searchText()
 
 	// make a list of strings then loop through the list assigning each entry to pat
 	string text;
+	//text = "World is over spam";
 	text = "The Indian roller(Coracias benghalensis) is a member of the bird family Coraciidae, the rollers.It occurs widely from the Arabian Peninsula to the Indian subcontinentand is designated as Least Concern on the IUCN Red List.The bird is best known for the aerobatic displays of males during the breeding season.It is commonly found in open grasslandand scrub forest habitats, and is often seen perched on roadside bare treesand wires, which give it a good view of the ground below where it finds its prey.Its diet consists mainly of insects such as beetlesand grasshoppers, but also includes spiders, scorpions, amphibiansand small reptiles. The largest population occurs in India, and several states in India have chosen it as their state bird.This picture shows an Indian roller of the benghalensis subspecies, photographed in Kanha Tiger Reserve in the Indian state of Madhya Pradesh. ";
 
 	//auto it = spamWords.begin();
@@ -106,14 +112,15 @@ void SetupText::searchText()
 
 		if (check(pat, text))
 		{
-			Position pos = strings->find_bm(pat, text);
+			//Position pos = strings->find_bm(pat, text);
+			Position pos = strings->findrk(pat, text, q);
 			cout << "spam detected" << endl;
 			cout << "spam word \"" << pat << "\" was found at position " << pos << endl;
 			break;
 		}
 		else if (check(pat, text) == false)
 		{
-			cout << "The spam word \"" << pat << "\" was found in the text" << endl;
+			cout << "The spam word \"" << pat << "\" was not found in the text" << endl;
 		}
 		//spamWords.pop_front();
 	}
