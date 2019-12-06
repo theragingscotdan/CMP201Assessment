@@ -122,6 +122,6 @@ void SetupText::searchText()
 		{
 			cout << "The spam word \"" << pat << "\" was not found in the text" << endl;
 		}
-		//spamWords.pop_front();
+		
 	}
 }

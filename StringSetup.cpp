@@ -110,14 +110,19 @@ Position StringSetup::find_kmp(const std::string& pat, const std::string& text)
 } 
 
 // the basis of this algortihm came from https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
-// % is the modulus function. this takes the value left over from the previous sum and uses it
-Position StringSetup::findrk(const string& pat, const string& text, int q)  //(char pat[], char text[], int q)
+
+// i will comment the aspects of the code that needed to be changed in order to fit my application's requirements and
+// what is already existing
+
+// I changed the function to return a position as opposed to the original which was a void
+// this is because I want to know and return the position of the word in the text to pass into my SetupText.cpp
+// since I am using strings, I set the passed in variables to be const strings as opposed to the char[] used
+Position StringSetup::findrk(const string& pat, const string& text, int q) 
 {
 	//string pati;
-	Position M = pat.size();
-	Position N = text.size();
-	//Position M = strlen(pat); // change me later!!!!!!
-	//Position N = strlen(text);  // change me later!!!!!!
+	Position M = pat.size(); // to match my scenario since position already exists and i can use .size() to work out the length
+	Position N = text.size(); // this is adapted to fix
+	
 	int i, j; // used for the iterator
 	int p = 0; // the hash value for the pattern
 	int t = 0; // hash value for the text
@@ -125,7 +130,7 @@ Position StringSetup::findrk(const string& pat, const string& text, int q)  //(c
 
 	for (i = 0; i < M - 1; ++i)
 	{
-		 h = (h * characters) % q;  // need to confirm what this fully means
+		 h = (h * characters) % q;  // // % is the modulus function. this takes the value left over from the previous sum and uses it
 		// the % q will take the remainder and use
 	}
 
@@ -153,7 +158,7 @@ Position StringSetup::findrk(const string& pat, const string& text, int q)  //(c
 			{
 				// the original code had this as a cout printing the found
 				// in the context of my own code however, this is not suitable
-				// instead, I need to return the current position
+				// instead, I need to return the current position which is M (position of the word)
 				return M;
 			}
 		}
@@ -168,5 +173,5 @@ Position StringSetup::findrk(const string& pat, const string& text, int q)  //(c
 		}
 	}
 	
-	return -1; // string not found
+	return -1; // string not found so return not found
 }
