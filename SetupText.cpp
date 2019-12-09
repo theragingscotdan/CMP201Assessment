@@ -42,6 +42,8 @@ SetupText::SetupText()
 	spamWords.push_back("Octagon");
 	spamWords.push_back("JoJo");
 	spamWords.push_back("reference");
+	spamWords.push_back("internet");
+	spamWords.push_back("memes");
 
 	spamWords.push_back("grown");
 	
@@ -51,7 +53,7 @@ SetupText::SetupText()
 
 /*list<string> SetupText::ChangeCase(string& s, string& pat)
 {
-	// this code was https://www.oreilly.com/library/view/c-cookbook/0596007612/ch04s15.html
+
 	string temp;
 
 	// iterate through spamwords
