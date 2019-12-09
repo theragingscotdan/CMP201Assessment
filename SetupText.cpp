@@ -35,12 +35,13 @@ SetupText::SetupText()
 	spamWords.push_back("Debug");
 	spamWords.push_back("programming");
 	spamWords.push_back("Sword");
-	spamWords.push_back("Art");
+	spamWords.push_back("Artist");
 	spamWords.push_back("Online");
 	spamWords.push_back("Bells");
 	spamWords.push_back("Whistles");
-
-
+	spamWords.push_back("Octagon");
+	spamWords.push_back("JoJo");
+	spamWords.push_back("reference");
 
 	spamWords.push_back("grown");
 	
