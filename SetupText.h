@@ -9,6 +9,7 @@ class SetupText
 {
 public:
 	SetupText();
+	void load_file(const std::string& filename, std::string& str);
 	//SetupList();
 	//std::string ChangeCase(const std::string text);
 	bool check(std::string pat, std::string text);

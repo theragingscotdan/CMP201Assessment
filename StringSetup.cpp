@@ -15,33 +15,33 @@ StringSetup::StringSetup()
 
 }
 
-void StringSetup::load_file(const std::string& filename, std::string& str)
-{
-	// To make this program less fussy about where exactly it's run
-	// from relative to the file, try looking in parent directories too.
-	std::string directory = "";
-	for (int i = 0; i < 6; i++) {
-		ifstream f(directory + filename, std::ios_base::binary);
-		if (!f.good()) {
-			directory = "../" + directory;
-			continue;
-		}
-
-		// Seek to the end of the file to find its length.
-		f.seekg(0, std::ios_base::end);
-		const size_t length = f.tellg();
-
-		// Seek back to the start of the file and read the data.
-		vector<char> buf(length);
-		f.seekg(0);
-		f.read(buf.data(), length);
-		str.assign(buf.begin(), buf.end());
-
-		return;
-	}
-
-	//die("Unable to find " + filename);
-}
+//void StringSetup::load_file(const std::string& filename, std::string& str)
+//{
+//	// To make this program less fussy about where exactly it's run
+//	// from relative to the file, try looking in parent directories too.
+//	std::string directory = "";
+//	for (int i = 0; i < 6; i++) {
+//		ifstream f(directory + filename, std::ios_base::binary);
+//		if (!f.good()) {
+//			directory = "../" + directory;
+//			continue;
+//		}
+//
+//		// Seek to the end of the file to find its length.
+//		f.seekg(0, std::ios_base::end);
+//		const size_t length = f.tellg();
+//
+//		// Seek back to the start of the file and read the data.
+//		vector<char> buf(length);
+//		f.seekg(0);
+//		f.read(buf.data(), length);
+//		str.assign(buf.begin(), buf.end());
+//
+//		return;
+//	}
+//
+//	//die("Unable to find " + filename);
+//}
 
 
 Position StringSetup::find_bm(const string& pat, const string& text) 

@@ -4,12 +4,16 @@
 #include <cctype>
 #include <algorithm>
 #include <iterator>
+#include <fstream>
+#include <vector>
 
 #include "SetupText.h"
 
 using std::transform;
 using std::string;
 using std::list;
+using std::ifstream;
+using std::vector;
 using std::cout;
 using std::endl;
 
@@ -18,7 +22,7 @@ using std::endl;
 
 SetupText::SetupText()
 {
-	//spamWords.push_back("Tiger");
+	spamWords.push_back("Tiger");
 	spamWords.push_back("World");
 	spamWords.push_back("spam");
 	spamWords.push_back("Cloud");
@@ -50,7 +54,33 @@ SetupText::SetupText()
 }
 
 
+void SetupText::load_file(const std::string& filename, std::string& str)
+{
+	// To make this program less fussy about where exactly it's run
+	// from relative to the file, try looking in parent directories too.
+	std::string directory = "";
+	for (int i = 0; i < 6; i++) {
+		ifstream f(directory + filename, std::ios_base::binary);
+		if (!f.good()) {
+			directory = "../" + directory;
+			continue;
+		}
 
+		// Seek to the end of the file to find its length.
+		f.seekg(0, std::ios_base::end);
+		const size_t length = f.tellg();
+
+		// Seek back to the start of the file and read the data.
+		vector<char> buf(length);
+		f.seekg(0);
+		f.read(buf.data(), length);
+		str.assign(buf.begin(), buf.end());
+
+		return;
+	}
+
+	//die("Unable to find " + filename);
+}
 /*list<string> SetupText::ChangeCase(string& s, string& pat)
 {
 
@@ -99,17 +129,16 @@ void SetupText::searchText()
 	// make a list of strings then loop through the list assigning each entry to pat
 	string text;
 	//text = "World is over spam";
-	text = "The Indian roller(Coracias benghalensis) is a member of the bird family Coraciidae, the rollers.It occurs widely from the Arabian Peninsula to the Indian subcontinentand is designated as Least Concern on the IUCN Red List.The bird is best known for the aerobatic displays of males during the breeding season.It is commonly found in open grasslandand scrub forest habitats, and is often seen perched on roadside bare treesand wires, which give it a good view of the ground below where it finds its prey.Its diet consists mainly of insects such as beetlesand grasshoppers, but also includes spiders, scorpions, amphibiansand small reptiles. The largest population occurs in India, and several states in India have chosen it as their state bird.This picture shows an Indian roller of the benghalensis subspecies, photographed in Kanha Tiger Reserve in the Indian state of Madhya Pradesh. ";
+	//text = "The Indian roller(Coracias benghalensis) is a member of the bird family Coraciidae, the rollers.It occurs widely from the Arabian Peninsula to the Indian subcontinentand is designated as Least Concern on the IUCN Red List.The bird is best known for the aerobatic displays of males during the breeding season.It is commonly found in open grasslandand scrub forest habitats, and is often seen perched on roadside bare treesand wires, which give it a good view of the ground below where it finds its prey.Its diet consists mainly of insects such as beetlesand grasshoppers, but also includes spiders, scorpions, amphibiansand small reptiles. The largest population occurs in India, and several states in India have chosen it as their state bird.This picture shows an Indian roller of the benghalensis subspecies, photographed in Kanha Tiger Reserve in the Indian state of Madhya Pradesh. ";
+	load_file("verylongstring.txt", text);
+	//load_file("wordcasetext.txt", text);
 
-	//auto it = spamWords.begin();
-	//string pat = "Tiger"; // insert what to look for here
-	//for (int i = 0; i < spamWords.size(); ++i)
 
 	list<string>::iterator it;
 
 	for (it = spamWords.begin(); it != spamWords.end(); ++it)
 	{
-		//pat = it->data;
+	
 		pat = *it;
 
 
