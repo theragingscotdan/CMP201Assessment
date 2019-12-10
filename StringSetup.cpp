@@ -83,31 +83,6 @@ Position StringSetup::find_bm(const string& pat, const string& text)
 	return -1; // Not found.
 }
 
-Position StringSetup::find_kmp(const std::string& pat, const std::string& text)
-{
-	Position pat_len = pat.size();
-	Position text_len = text.size();
-	string P;
-	int nP;
-
-	Position j = 0;
-	Position k = 0; 
-
-
-	nP = 0;
-
-	/*do
-	{
-		//if 
-
-
-
-
-	} while (j < text_len); */
-
-	return -1;
-
-} 
 
 // the basis of this algortihm came from https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
 
