@@ -31,25 +31,25 @@ SetupText::SetupText()
 	spamWords.push_back("Tiger");
 	spamWords.push_back("World");
 	spamWords.push_back("spam");
-	spamWords.push_back("Cloud");
-	spamWords.push_back("Banana");
-	spamWords.push_back("Percentage");
-	spamWords.push_back("Keyboard");
-	spamWords.push_back("Mouse");
+	spamWords.push_back("cloud");
+	spamWords.push_back("banana");
+	spamWords.push_back("percentage");
+	spamWords.push_back("keyboard");
+	spamWords.push_back("mouse");
 	spamWords.push_back("perched");
 	spamWords.push_back("nanomachines");
 	spamWords.push_back("game");
 	spamWords.push_back("anime");
 	spamWords.push_back("growl");
-	spamWords.push_back("Mathematics");
-	spamWords.push_back("Debug");
+	spamWords.push_back("mathematics");
+	spamWords.push_back("debug");
 	spamWords.push_back("programming");
-	spamWords.push_back("Sword");
-	spamWords.push_back("Artist");
-	spamWords.push_back("Online");
-	spamWords.push_back("Bells");
-	spamWords.push_back("Whistles");
-	spamWords.push_back("Octagon");
+	spamWords.push_back("sword");
+	spamWords.push_back("artist");
+	spamWords.push_back("online");
+	spamWords.push_back("bells");
+	spamWords.push_back("whistles");
+	spamWords.push_back("octagon");
 	spamWords.push_back("JoJo");
 	spamWords.push_back("reference");
 	spamWords.push_back("internet");
@@ -116,9 +116,9 @@ void SetupText::load_file(const std::string& filename, std::string& str)
 bool SetupText::check(string pat, string text)
 {
 	
-	Position pos = strings->find_bm(pat, text);
+	//Position pos = strings->find_bm(pat, text);
 	
-	//Position pos = strings->findrk(pat, text, q);
+	Position pos = strings->findrk(pat, text, q);
 
 
 	if (pos == -1)
@@ -142,8 +142,8 @@ void SetupText::searchText()
 	//load_file("verylongstring.txt", text);
 	//load_file("longtext1.txt", text);
 	//load_file("wordcasetext.txt", text);
-	//load_file("wordcasetext1.txt", text);
-	load_file("nirvana.txt", text);
+	load_file("wordcasetext1.txt", text);
+	//load_file("nirvana.txt", text);
 
 	list<string>::iterator it;
 
@@ -161,8 +161,8 @@ void SetupText::searchText()
 
 			theClock::time_point startTime = theClock::now();
 			theClock::time_point endTime = theClock::now();
-			Position pos = strings->find_bm(pat, text);
-			//Position pos = strings->findrk(pat, text, q);
+			//Position pos = strings->find_bm(pat, text);
+			Position pos = strings->findrk(pat, text, q);
 	
 
 			cout << "spam detected" << endl;

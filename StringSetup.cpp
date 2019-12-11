@@ -134,7 +134,7 @@ Position StringSetup::findrk(const string& pat, const string& text, int q)
 				// the original code had this as a cout printing the found
 				// in the context of my own code however, this is not suitable
 				// instead, I need to return the current position which is M (position of the word)
-				return M;
+				return i; // M;
 			}
 		}
 		if (i < N - M)
