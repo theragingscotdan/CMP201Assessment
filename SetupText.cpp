@@ -6,6 +6,7 @@
 #include <iterator>
 #include <fstream>
 #include <vector>
+#include <chrono>
 
 #include "SetupText.h"
 
@@ -16,6 +17,11 @@ using std::ifstream;
 using std::vector;
 using std::cout;
 using std::endl;
+
+using std::chrono::duration_cast;
+using std::chrono::milliseconds;
+using theClock = std::chrono::steady_clock;
+
 
  
 
@@ -48,6 +54,7 @@ SetupText::SetupText()
 	spamWords.push_back("reference");
 	spamWords.push_back("internet");
 	spamWords.push_back("memes");
+	spamWords.push_back("Nirvana");
 
 	spamWords.push_back("grown");
 	
@@ -109,8 +116,10 @@ void SetupText::load_file(const std::string& filename, std::string& str)
 bool SetupText::check(string pat, string text)
 {
 	
-	//Position pos = strings->find_bm(pat, text);
-	Position pos = strings->findrk(pat, text, q);
+	Position pos = strings->find_bm(pat, text);
+	
+	//Position pos = strings->findrk(pat, text, q);
+
 
 	if (pos == -1)
 	{
@@ -130,30 +139,47 @@ void SetupText::searchText()
 	string text;
 	//text = "World is over spam";
 	//text = "The Indian roller(Coracias benghalensis) is a member of the bird family Coraciidae, the rollers.It occurs widely from the Arabian Peninsula to the Indian subcontinentand is designated as Least Concern on the IUCN Red List.The bird is best known for the aerobatic displays of males during the breeding season.It is commonly found in open grasslandand scrub forest habitats, and is often seen perched on roadside bare treesand wires, which give it a good view of the ground below where it finds its prey.Its diet consists mainly of insects such as beetlesand grasshoppers, but also includes spiders, scorpions, amphibiansand small reptiles. The largest population occurs in India, and several states in India have chosen it as their state bird.This picture shows an Indian roller of the benghalensis subspecies, photographed in Kanha Tiger Reserve in the Indian state of Madhya Pradesh. ";
-	load_file("verylongstring.txt", text);
+	//load_file("verylongstring.txt", text);
+	//load_file("longtext1.txt", text);
 	//load_file("wordcasetext.txt", text);
-
+	//load_file("wordcasetext1.txt", text);
+	load_file("nirvana.txt", text);
 
 	list<string>::iterator it;
 
+
+	
 	for (it = spamWords.begin(); it != spamWords.end(); ++it)
 	{
 	
 		pat = *it;
 
-
+		
 		if (check(pat, text))
 		{
-			//Position pos = strings->find_bm(pat, text);
-			Position pos = strings->findrk(pat, text, q);
+
+
+			theClock::time_point startTime = theClock::now();
+			theClock::time_point endTime = theClock::now();
+			Position pos = strings->find_bm(pat, text);
+			//Position pos = strings->findrk(pat, text, q);
+	
+
 			cout << "spam detected" << endl;
 			cout << "spam word \"" << pat << "\" was found at position " << pos << endl;
 			break;
 		}
 		else if (check(pat, text) == false)
 		{
+
+			theClock::time_point startTime = theClock::now();
+			theClock::time_point endTime = theClock::now();
 			cout << "The spam word \"" << pat << "\" was not found in the text" << endl;
+			auto time_taken = duration_cast<milliseconds>(endTime - startTime).count();
+			cout << "It took " << time_taken << " ms." << endl;
 		}
-		
+	/*auto time_taken = duration_cast<milliseconds>(endTime - startTime).count();
+		cout << "It took " << time_taken << " ms." << endl;*/
 	}
+
 }

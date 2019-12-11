@@ -57,7 +57,7 @@ Position StringSetup::find_bm(const string& pat, const string& text)
 	for (int i = 0; i < pat_len; ++i)
 		skip[int(pat[i])] = (pat_len - 1) - i;
 
-	for (int i = 0; i < text_len - pat_len; ++i) {
+	for (int i = 0; i <= text_len - pat_len; ++i) {
 
 		//show_context(pat, i);
 		//(text, i);

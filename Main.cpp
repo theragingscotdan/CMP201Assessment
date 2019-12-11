@@ -19,14 +19,10 @@ using theClock = std::chrono::steady_clock;
 SetupText* txt;
 
 
-
-// https://www.oreilly.com/library/view/c-cookbook/0596007612/ch04s15.html
-
-
 int main(int argc, char* argv[])
 {
 	txt = new SetupText;
-	//FillList();
+
 
 	theClock::time_point startTime = theClock::now();
 	txt->searchText();
