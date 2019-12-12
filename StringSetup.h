@@ -22,7 +22,7 @@ public:
 	Position findrk(const std::string& pat, const std::string& text, int q);
 	
 private:
-	int q = 157;
+	int q;
 
 
 
