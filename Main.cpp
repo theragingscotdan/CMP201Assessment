@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 {
 	txt = new SetupText;
 
-	ofstream my_file("Testing/rkvlongstring.csv");
+	ofstream my_file("Testing/rklesswords6m.csv");
 	my_file << "time taken \n";
 
 	for (int i = 0; i < 100; ++i) {
