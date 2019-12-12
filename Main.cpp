@@ -23,14 +23,14 @@ int main(int argc, char* argv[])
 {
 	txt = new SetupText;
 
+	for (int i = 0; i < 100; ++i) {
+		theClock::time_point startTime = theClock::now();
+		txt->searchText();
+		theClock::time_point endTime = theClock::now();
 
-	theClock::time_point startTime = theClock::now();
-	txt->searchText();
-	theClock::time_point endTime = theClock::now();
-
-	auto time_taken = duration_cast<milliseconds>(endTime - startTime).count();
-	cout << "It took " << time_taken << " ms." << endl;
-
+		auto time_taken = duration_cast<milliseconds>(endTime - startTime).count();
+		cout << "It took " << time_taken << " ms." << endl;
+	}
 
 	delete txt;
 	return 0;
