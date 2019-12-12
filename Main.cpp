@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 {
 	txt = new SetupText;
 
-	ofstream my_file("timingtest.csv");
+	ofstream my_file("Testing/rkvlongstring.csv");
 	my_file << "time taken \n";
 
 	for (int i = 0; i < 100; ++i) {
@@ -34,7 +34,6 @@ int main(int argc, char* argv[])
 		theClock::time_point endTime = theClock::now();
 
 		auto time_taken = duration_cast<milliseconds>(endTime - startTime).count();
-		//ofstream my_file("timingtest.txt");
 		cout << "It took " << time_taken << " ms." << endl;
 		my_file << time_taken << endl;
 	}
